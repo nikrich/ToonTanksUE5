@@ -15,21 +15,24 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+		int32 MyInt = 32;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Turret", meta = (AllowPrivateAccess = "true"))
 		class UCapsuleComponent* CapsuleComp;
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Turret", meta = (AllowPrivateAccess = "true"))
 		UStaticMeshComponent* BaseMesh;
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Turret", meta = (AllowPrivateAccess = "true"))
 		UStaticMeshComponent* TurretMesh;
 
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Turret", meta = (AllowPrivateAccess = "true"))
 		class USceneComponent* ProjectileSpawnPoint;
 
 public:
@@ -38,8 +41,5 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	UPROPERTY(EditAnywhere)
-	float Speed = 400;
 
 };
