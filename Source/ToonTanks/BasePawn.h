@@ -20,7 +20,7 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 		class UCapsuleComponent* CapsuleComp;
 
 	UPROPERTY()
@@ -29,11 +29,17 @@ private:
 	UPROPERTY()
 		UStaticMeshComponent* TurretMesh;
 
+	UPROPERTY()
+		class USceneComponent* ProjectileSpawnPoint;
+
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(EditAnywhere)
+	float Speed = 400;
 
 };
