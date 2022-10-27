@@ -27,5 +27,8 @@ private:
 		class UCameraComponent* CameraComponent;
 
 	void Move(float Value);
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+		float MoveSpeed = 400;
 	
 };
