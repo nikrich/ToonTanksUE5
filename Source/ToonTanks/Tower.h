@@ -27,4 +27,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "AI")
 	float FireRange = 400;
 
+	FTimerHandle FireRateTimerHandle;
+	float FireRate = 2.f;
+	void CheckFireCondition();
+	bool IsInRange();
+
 };
