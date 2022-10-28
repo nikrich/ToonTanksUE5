@@ -24,7 +24,7 @@ public:
 private:
 	class ATank* Tank;
 
-	UPROPERTY(EditAnywhere, Category = "AI")
+	UPROPERTY(EditAnywhere, Category = "Combat")
 	float FireRange = 400;
 
 	FTimerHandle FireRateTimerHandle;
