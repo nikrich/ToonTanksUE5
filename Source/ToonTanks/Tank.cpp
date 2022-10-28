@@ -23,6 +23,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
+	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::Fire);
 }
 
 void ATank::BeginPlay()
@@ -46,11 +47,18 @@ void ATank::Tick(float DeltaTime)
 
 		RotateTurret(HitResult.ImpactPoint);
 	}
-}	
+}
 
 void ATank::Move(float Value)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("Move value %f"), Value);
+
+	if (Value < 0) {
+		IsReversing = true;
+	}
+	else {
+		IsReversing = false;
+	}
 
 	FVector DeltaLocation = FVector::Zero();
 	DeltaLocation.X = Value;
@@ -63,7 +71,14 @@ void ATank::Turn(float Value)
 
 
 	FRotator Rotation = FRotator::ZeroRotator;
-	Rotation.Yaw = Value;
+
+	if (IsReversing) {
+		Rotation.Yaw = -Value;
+	}
+	else {
+		Rotation.Yaw = Value;
+	}	
 
 	AddActorLocalRotation(Rotation * UGameplayStatics::GetWorldDeltaSeconds(this) * TurnSpeed, true);
 }
+

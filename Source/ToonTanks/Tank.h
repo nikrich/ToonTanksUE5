@@ -32,7 +32,9 @@ private:
 
 	void Move(float Value);
 
-	void Turn(float Value);
+	void Turn(float Value);	
+
+	bool IsReversing = false;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 		float MoveSpeed = 400;

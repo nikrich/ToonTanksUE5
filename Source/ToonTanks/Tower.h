@@ -24,4 +24,7 @@ public:
 private:
 	class ATank* Tank;
 
+	UPROPERTY(EditAnywhere, Category = "AI")
+	float FireRange = 400;
+
 };
