@@ -33,6 +33,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Damage", meta = (AllowPrivateAccess = "true"))
 		float DamageAmount = 10;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class UParticleSystem* HitParticles;
+
 public:
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
